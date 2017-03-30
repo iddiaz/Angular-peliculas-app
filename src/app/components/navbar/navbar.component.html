@@ -13,17 +13,16 @@
         <a class="nav-link" [routerLink]="['buscar']">Buscar</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input [(ngModel)]="texto"
-             class="form-control mr-sm-2"
+    <form (ngSubmit)="buscarPelicula( buscarTexto.value )"
+          class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2"
              #buscarTexto 
-             (keyup.enter)="buscarPelicula(buscarTexto.value)" 
-             name="texto" 
              type="text" 
              placeholder="Buscar película">
-      <button (click)="buscarPelicula(buscarTexto.value)" 
-              class="btn btn-outline-success my-2 my-sm-0" 
-              type="button">Buscar</button>
+
+      <button class="btn btn-outline-success my-2 my-sm-0" 
+              type="submit">Buscar
+      </button>
     </form>
   </div>
 </nav>

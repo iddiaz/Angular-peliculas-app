@@ -63,15 +63,14 @@ export class PeliculasService {
 
   
 
-  buscarPeliculas( termino: string ) {
-    termino = termino.toLowerCase().trim();
-    let url = `${this.urlMovieDb}/search/movie?query=${termino}&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
+  buscarPelicula( termino: string ) {
 
+    let url = `${this.urlMovieDb}/search/movie?query=${termino}&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
+    
     return this.jsonp.get( url )
       .map( (res: Response ) => {
         this.peliculas = res.json().results;
-        //  console.log(res.json().results);
-        //  console.log(this.peliculas);        
+        console.log(this.peliculas);      
         return res.json().results;
       });
 
@@ -83,8 +82,6 @@ export class PeliculasService {
     
     return this.jsonp.get( url )
       .map( (res: Response ) => {
-        this.pelicula = res.json();
-        console.log(this.pelicula);
         return res.json();   
     }); 
   }

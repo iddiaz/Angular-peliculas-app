@@ -10,32 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscarComponent implements OnInit {
 
-  texto: string;
+  buscar: string = '';
   peliculas: any;
   
-  urlImg500 = `https://image.tmdb.org/t/p/w500/`;
-
   constructor(private peliculasService: PeliculasService, 
               private router: Router,
               private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit() {
 
-    this.activatedRoute.params.subscribe( params => {
-      if (params['termino']) {
-         this.peliculasService.buscarPeliculas( params['termino']).subscribe();
-      }
+    this.activatedRoute.params.subscribe( parametros => {
+      console.log(parametros);
+       if (parametros['texto']) {
+         this.buscar = parametros ['texto'];
+          this.buscarPelicula();
+       }
     });
   }
 
-  buscarPelicula( text ) {
-    this.peliculasService.buscarPeliculas( text ).subscribe();
-    this.texto = '';
+  buscarPelicula( ) {
+    if (this.buscar.length === 0 ) {
+      return;
+    }
+    this.peliculasService.buscarPelicula( this.buscar ).subscribe();
+    
   }
 
-  verDetalles( id ) {
-    this.router.navigate(['/pelicula', id]);
-  }
 
 
 }

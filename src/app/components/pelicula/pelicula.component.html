@@ -1,14 +1,28 @@
-<section class="container">
+<section class="container" *ngIf="pelicula">
+    <h1 class="text-center mt-5">{{pelicula.original_title}}</h1>
+    <hr/>
   <div class="row mt-5">
-    <div class="col-md-4">
-      <img [src]="'https://image.tmdb.org/t/p/w300/'+pelicula.poster_path | noFoto" [alt]="pelicula.original_title">
+    <div class="col-md-5">
+      <img [src]="pelicula | peliculaImagen:true | noFoto" 
+           [alt]="pelicula.original_title"
+           class="img-thumbnail img-fluid">
     </div>
-    <div class="col-md-8 mb-5">
-      <h2 class="text-center">{{pelicula.original_title}}</h2>
-      <p>{{ pelicula.overview | notexto}}</p>
-      <button (click)="volver()"
+    <div class="col-md-7 mb-5">
+      <h3>Sinopsis</h3>
+      <hr/>
+      <p class="text-justify">{{ pelicula.overview | notexto}}</p>
+      <p class="text-justify">{{ pelicula.tagline}}</p>
+      <h4 class="text-justify">Frase Celebre: </h4>
+      <p>{{pelicula.tagline}}</p>
+      <p class="text-justify">
+        Popularidad: <span class="badge badge-primary">{{ pelicula.popularity | number:'.0-0' }} / 10 </span>
+      </p>
+      <p class="text-justify">
+        Voto promedio: <span class="badge badge-primary">{{ pelicula.vote_average }}</span>
+      </p>
+      <button [routerLink]="['/'+regresarA, busqueda ]"
               type="button" 
-              class="btn btn-outline-danger btn-block mt-5">
+              class="btn btn-outline-danger push-5 mt-5">
               Volver
       </button>
     </div>

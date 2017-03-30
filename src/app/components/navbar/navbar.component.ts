@@ -9,21 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  texto: string;
-  buscarTexto: string;
+
 
   constructor(private _ps: PeliculasService, private router: Router ) { }
 
   ngOnInit() {}
 
-  buscarPelicula( termino: string ) {
-
-    if (termino) {
-      this.router.navigate(['/buscar', termino ]);
-      this.texto = '';
-      
+  buscarPelicula( texto: string ) { 
+    if ( texto.length === 0 ) {
+      return;
     }
 
-
+    this.router.navigate(['buscar', texto ]);
   }
+
+
+  
 }
