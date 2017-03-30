@@ -1,0 +1,17 @@
+<section class="container">
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <img [src]="'https://image.tmdb.org/t/p/w300/'+pelicula.poster_path | noFoto" [alt]="pelicula.original_title">
+    </div>
+    <div class="col-md-8 mb-5">
+      <h2 class="text-center">{{pelicula.original_title}}</h2>
+      <p>{{ pelicula.overview | notexto}}</p>
+      <button (click)="volver()"
+              type="button" 
+              class="btn btn-outline-danger btn-block mt-5">
+              Volver
+      </button>
+    </div>
+  </div>
+ 
+</section>  

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { PeliculasService } from './../../services/peliculas.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  texto: string;
+  buscarTexto: string;
 
-  ngOnInit() {
+  constructor(private _ps: PeliculasService, private router: Router ) { }
+
+  ngOnInit() {}
+
+  buscarPelicula( termino: string ) {
+
+    if (termino) {
+      this.router.navigate(['/buscar', termino ]);
+      this.texto = '';
+      
+    }
+
+
   }
-
 }

@@ -1,3 +1,20 @@
-<p>
-  buscar works!
-</p>
+<div class="container mt-5">
+  <div class="col-md-12 mt-5 mb-5 text-center">
+    <input [(ngModel)]="texto"
+           (keyup.enter)="buscarPelicula(texto)"
+           type="text" name="buscar" placeholder="buscar películas" class="btn-block">
+    <hr/>
+  </div>
+
+  <div class="card-columns">
+    <div class="card animated fadeIn fast" *ngFor="let pelicula of peliculasService.peliculas" >
+      <img class="card-img-top img-fluid" [src]="urlImg500 + pelicula.poster_path | noFoto" alt="Card image cap">
+      <div class="card-block">
+        <h4 class="card-title">{{pelicula.title}}</h4>
+        <p class="card-text">{{pelicula.overview | notexto}}</p>
+        <button (click)="verDetalles(pelicula.id)" type="button" class="btn btn-outline-primary btn-block">Ver detalles</button>
+      </div>
+    </div>
+     
+  </div>
+</div>
