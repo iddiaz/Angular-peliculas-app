@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { NoFotoPipe } from './pipes/no-foto.pipe';
+import { GaleriaComponent } from './components/home/galeria.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NoFotoPipe } from './pipes/no-foto.pipe';
     PeliculaComponent,
     NoFotoPipe,
     NotextoPipe,
-    PeliculaImagenPipe
+    PeliculaImagenPipe,
+    GaleriaComponent
   ],
   imports: [
     BrowserModule,

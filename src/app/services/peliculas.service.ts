@@ -45,7 +45,7 @@ export class PeliculasService {
     // si esto da error es porque la api no hacepta crossdomain y hay que usar jsonp
     // en este caso no da ningun error pero usaremos el otro metodo
     return this.jsonp.get( url )
-      .map((res: Response) => {
+      .map( ( res: Response ) => {
         return res.json();
       });
 
@@ -53,7 +53,7 @@ export class PeliculasService {
 
   getPopularesNinos() {
     let url = `${this.urlMovieDb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc?&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
-    
+
     return this.jsonp.get( url )
       .map((res: Response) => {
         return res.json();
